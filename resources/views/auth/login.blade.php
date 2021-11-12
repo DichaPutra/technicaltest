@@ -16,9 +16,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('login.custom') }}">
                             @csrf
-
-
-
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Username" id="username" class="form-control" name="username" required
                                        autofocus>

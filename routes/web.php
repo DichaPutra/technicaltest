@@ -25,7 +25,7 @@ Route::get('/', function () {
 // custom auth routes
 Route::get('login', [CustomAuthController::class, 'index'])->name('login')->middleware(['isLogin']);
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
-Route::post('logout', [CustomAuthController::class, 'logout'])->name('logout');
+Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 //admin
 Route::middleware([cekAdmin::class])->group(function () {

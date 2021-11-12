@@ -10,73 +10,70 @@
 
         <title>Technical Test Dicha Putra Arwindra</title>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-        <!--Icon-->
-        <link rel="icon" href="{{asset('/favicon/favicon.png')}}" type="image/x-icon"/>
+        <!-- fontawsome kit CDN -->
+        <script src="https://kit.fontawesome.com/39ba0aa9d2.js" crossorigin="anonymous"></script>
 
-        <!--Bootstrap Component--> 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-        <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <!--jquery CDN-->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!--datatable css-->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/datatables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    pageLength: 5,
+                    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'All']]
+                });
+            });
+        </script>
 
     </head>
+
     <body>
 
-        <div id="app">
-            <nav class="navbar navbar-light navbar-expand-lg mb-5" style="">
-                <div class="container">
-                    <a class="navbar-brand mr-auto" href="#">TechnicalTest</a>
-                    <div class="pull-right">
-                        <ul class="navbar-nav ml-auto">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Ninth navbar example">
+            <div class="container-xl">
+                <a class="navbar-brand" href="#">TechnicalTest</a>
+                <div class="pull-right">
+                    <button class="navbar-toggler pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbars">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">Login</a>
                             </li>
                             @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i>
-                                        <span>{{ __('Logout') }}</span>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </a>
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" aria-disabled="true">{{ Auth::user()->name }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{ route('logout') }}" tabindex="-1" >Logout</a>
+                            </li>
+                            <!--
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown07XL">
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                </ul>
+                            </li>-->
                             @endguest
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-            <main class="py-4">
-                @yield('body')
-            </main>
-        </div>
+        <main class="py-4">
+            @yield('body')
+        </main>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>
