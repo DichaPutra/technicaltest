@@ -1,0 +1,2 @@
+- install xampp mariaDB
+- install composer
