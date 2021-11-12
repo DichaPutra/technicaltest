@@ -17,11 +17,13 @@ class CustomAuthController extends Controller {
 
     public function customLogin(Request $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+        // cek if username not exist | password salah
+        if (!User::where('username', '=', $request->username)->exists())
+        {
+            return redirect("login")->withErrors('Username tidak ditemukan');
+        }
 
+        // Auth Process
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials))
         {
@@ -35,18 +37,7 @@ class CustomAuthController extends Controller {
             }
         }
 
-
-        return redirect("login")->withSuccess('Login details are not valid');
-    }
-
-    public function dashboard()
-    {
-        if (Auth::check())
-        {
-            return view('dashboard');
-        }
-
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("login")->withErrors('Password Salah');
     }
 
     public function logout()

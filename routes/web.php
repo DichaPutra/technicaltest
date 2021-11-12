@@ -19,12 +19,11 @@ use App\Http\Middleware\cekUser;
 
 // set landing page awal 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect("login");
 });
 
 // custom auth routes
-
-Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::get('login', [CustomAuthController::class, 'index'])->name('login')->middleware(['isLogin']);
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::post('logout', [CustomAuthController::class, 'logout'])->name('logout');
 

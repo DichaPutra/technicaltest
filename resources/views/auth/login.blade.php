@@ -5,14 +5,23 @@
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-4">
+                @if($errors->any())
+                <div class="alert alert-danger alert-dismissible show" role="alert">
+                    {{$errors->first()}}
+                </div>
+                @endif
+
                 <div class="card">
-                    <h4 class="card-header text-center">Sign In</h4>
+                    <div class="card-header text-center">Sign In</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login.custom') }}">
                             @csrf
+
+
+
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Username" id="username" class="form-control" name="username" required
-                                    autofocus>
+                                       autofocus>
                                 @if ($errors->has('username'))
                                 <span class="text-danger">{{ $errors->first('username') }}</span>
                                 @endif
