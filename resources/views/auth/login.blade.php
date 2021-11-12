@@ -14,11 +14,11 @@
                 <div class="card">
                     <div class="card-header text-center">Sign In</div>
                     <div class="card-body">
+                        <br>
                         <form method="POST" action="{{ route('login.custom') }}">
                             @csrf
                             <div class="form-group mb-3">
-                                <input type="text" placeholder="Username" id="username" class="form-control" name="username" required
-                                       autofocus>
+                                <input type="text" placeholder="Username" id="username" class="form-control" name="username" required autofocus>
                                 @if ($errors->has('username'))
                                 <span class="text-danger">{{ $errors->first('username') }}</span>
                                 @endif
@@ -31,11 +31,11 @@
                                 @endif
                             </div>
 
-                            <div class="d-grid mx-auto">
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                            <!-- <div class="d-grid mx-auto">
                                 <button type="submit" class="btn btn-dark btn-block">Signin</button>
-                            </div>
+                            </div>-->
                         </form>
-
                     </div>
                 </div>
             </div>
