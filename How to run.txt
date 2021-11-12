@@ -1,2 +1,4 @@
 - install xampp mariaDB
+- Create Database dangan nama 'technicaltest'
 - install composer
+- 
