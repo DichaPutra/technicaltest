@@ -25,39 +25,18 @@ class CustomAuthController extends Controller {
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials))
         {
-            return redirect()->intended('dashboard')
-                            ->withSuccess('Signed in');
+            if (auth()->user()->role == 'admin')
+            {
+                return redirect()->route('admin.orderlist');
+            }
+            elseif (auth()->user()->role == 'user')
+            {
+                return redirect()->route('client.orderlist');
+            }
         }
 
+
         return redirect("login")->withSuccess('Login details are not valid');
-    }
-
-    public function registration()
-    {
-        return view('auth.registration');
-    }
-
-    public function customRegistration(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required|username|unique:users',
-            'password' => 'required|min:6',
-        ]);
-
-        $data = $request->all();
-        $check = $this->create($data);
-
-        return redirect("dashboard")->withSuccess('You have signed-in');
-    }
-
-    public function create(array $data)
-    {
-        return User::create([
-                    'name' => $data['name'],
-                    'username' => $data['username'],
-                    'password' => Hash::make($data['password'])
-        ]);
     }
 
     public function dashboard()
