@@ -26,15 +26,15 @@ Route::get('/', function () {
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::post('logout', [CustomAuthController::class, 'logout'])->name('logout');
 
 //admin
 Route::middleware([cekAdmin::class])->group(function () {
-    Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+    Route::get('admin-orderlist', [\App\Http\Controllers\admin\orderlist::class, 'index'])->name('admin.orderlist');
 });
 
 //user
-Route::middleware([cekAdmin::class])->group(function () {
-    Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+Route::middleware([cekUser::class])->group(function () {
+    Route::get('user-orderlist', [\App\Http\Controllers\user\orderlist::class, 'index'])->name('user.orderlist');
 });
 

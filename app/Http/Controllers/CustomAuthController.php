@@ -31,7 +31,7 @@ class CustomAuthController extends Controller {
             }
             elseif (auth()->user()->role == 'user')
             {
-                return redirect()->route('client.orderlist');
+                return redirect()->route('user.orderlist');
             }
         }
 
@@ -49,7 +49,7 @@ class CustomAuthController extends Controller {
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
-    public function signOut()
+    public function logout()
     {
         Session::flush();
         Auth::logout();
