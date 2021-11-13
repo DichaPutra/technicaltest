@@ -30,7 +30,7 @@ Route::get('logout', [CustomAuthController::class, 'logout'])->name('logout');
 //admin
 Route::middleware([cekAdmin::class])->group(function () {
     Route::get('admin-orderlist', [\App\Http\Controllers\admin\orderlist::class, 'index'])->name('admin.orderlist');
-    Route::get('admin-orderentry-new', [\App\Http\Controllers\admin\orderentry::class, 'index'])->name('admin.orderentry.new'); //trigger insert orderlist
+    Route::get('admin-orderlist-add', [\App\Http\Controllers\admin\orderlist::class, 'add'])->name('admin.orderlist.add');
     Route::get('admin-orderentry-view/{orderid}', [\App\Http\Controllers\admin\orderentry::class, 'view'])->name('admin.orderentry.view');
 });
 

@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Filter</button>
-                            <a href="{{route('admin.orderentry.new')}}" class="btn btn-success" ><i class="fas fa-plus"></i> New Order</a>
+                            <a href="{{route('admin.orderlist.add')}}" class="btn btn-success" ><i class="fas fa-plus"></i> New Order</a>
                         </form>
                         <br>
 
