@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form method="post" action="#">
+                        <form>
                             @csrf
                             <div class="col-md-4">
                                 <div class="row mb-3">
@@ -49,11 +49,34 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary">Add Item</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Item</button>
                             <a href='#'><button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save Order</button></a>
                         </form><br>
 
-                        <table id="example" class="table table-striped display" style="width:100%">
+                        <!--MODAL Tambah Product-->
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form>
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <livewire:addproduct />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--TABEL orderentry-->
+                        <table id="datatable" class="table table-striped display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Product ID</th>

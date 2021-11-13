@@ -47,7 +47,7 @@
                         </form>
                         <br>
 
-                        <table id="example" class="table table-striped display" style="width:100%">
+                        <table id="datatable" class="table table-striped display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
