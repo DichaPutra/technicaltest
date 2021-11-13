@@ -11,7 +11,8 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page" >Order List</li>
+            <li class="breadcrumb-item">Order List</li>
+            <li class="breadcrumb-item active" aria-current="page">Order Entry</li>
         </ol>
     </nav>
 
@@ -22,7 +23,7 @@
             <!-- Project Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold">Order List</h6>
+                    <h6 class="m-0 font-weight-bold">Order Entry</h6>
                 </div>
                 <div class="card-body">
                     <div class="card-body">
@@ -36,24 +37,30 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Customer</b></label>
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Order Date</b></label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Customer Name</b></label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" >
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Filter</button>
-                            <a href='#'><button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> New Order</button></a>
+                            <button type="submit" class="btn btn-primary">Add Item</button>
+                            <a href='#'><button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Save Order</button></a>
                         </form><br>
 
                         <table id="example" class="table table-striped display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Order ID</th>
-                                    <th>Order Date</th>
-                                    <th>Customer Name</th>
-                                    <th>Total Price</th>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>Unit Price</th>
+                                    <th>QTY</th>
+                                    <th>Sub Total</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -526,6 +533,5 @@
 @endsection
 
 @section('script')
-
 @endsection
 
