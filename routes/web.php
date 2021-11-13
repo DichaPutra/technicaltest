@@ -42,5 +42,12 @@ Route::middleware([cekAdmin::class])->group(function () {
 //user
 Route::middleware([cekUser::class])->group(function () {
     Route::get('user-orderlist', [\App\Http\Controllers\user\orderlist::class, 'index'])->name('user.orderlist');
+    Route::post('user-orderlist-search', [\App\Http\Controllers\user\orderlist::class, 'search'])->name('user.orderlist.search');
+    Route::get('user-orderlist-add', [\App\Http\Controllers\user\orderlist::class, 'add'])->name('user.orderlist.add');
+    Route::post('user-orderlist-save', [\App\Http\Controllers\user\orderlist::class, 'save'])->name('user.orderlist.save');
+    Route::get('user-orderlist-delete/{id}', [\App\Http\Controllers\user\orderlist::class, 'delete'])->name('user.orderlist.delete');
+    Route::get('user-orderentry-view/{orderid}', [\App\Http\Controllers\user\orderentry::class, 'view'])->name('user.orderentry.view');
+    Route::post('user-orderentry-add', [\App\Http\Controllers\user\orderentry::class, 'add'])->name('user.orderentry.add');
+    Route::get('user-orderentry-delete/{id}', [\App\Http\Controllers\user\orderentry::class, 'delete'])->name('user.orderentry.delete');
 });
 
