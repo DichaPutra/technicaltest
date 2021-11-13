@@ -18,9 +18,9 @@ class CreateOrderlistTable extends Migration {
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('orderid');
-            $table->date('orderdate');
-            $table->string('customername');
-            $table->string('totalprice');
+            $table->date('orderdate')->nullable();
+            $table->string('customername')->nullable();
+            $table->string('totalprice')->nullable();
             $table->timestamps();
         });
     }

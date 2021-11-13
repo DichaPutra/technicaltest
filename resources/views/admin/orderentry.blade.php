@@ -11,7 +11,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Order List</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.orderlist')}}">Order List</a></li>
             <li class="breadcrumb-item active" aria-current="page">Order Entry</li>
         </ol>
     </nav>
@@ -33,24 +33,24 @@
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Order ID</b></label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" >
+                                        <input type="text" class="form-control" value="{{$orderlist->orderid}}" readonly="">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Order Date</b></label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" >
+                                        <input type="date" class="form-control" value="{{$orderlist->orderdate}}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Customer Name</b></label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" >
+                                        <input type="text" class="form-control" value="{{$orderlist->customername}}">
                                     </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Add Item</button>
-                            <a href='#'><button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Save Order</button></a>
+                            <a href='#'><button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save Order</button></a>
                         </form><br>
 
                         <table id="example" class="table table-striped display" style="width:100%">
