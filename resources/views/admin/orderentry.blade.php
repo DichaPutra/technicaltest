@@ -130,7 +130,7 @@
                                     <td>{{ $oe->subtotal}}</td>
                                     @if($orderlist->totalprice == null)
                                     <td>
-                                        <a href="{{route('admin.orderentry.delete',$oe->id)}}" class="btn btn-danger btn-sm" href="#" onclick="return confirm('Apakah anda yakin untuk menghapus item ini ?');"><i class="fas fa-trash"></i></a>
+                                        <a href="{{route('admin.orderentry.delete',$oe->id)}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin untuk menghapus item ini ?');"><i class="fas fa-trash"></i></a>
                                     </td>
                                     @endif
                                 </tr>

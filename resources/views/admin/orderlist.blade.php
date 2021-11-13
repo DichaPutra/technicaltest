@@ -26,19 +26,19 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form method="post" action="#">
+                        <form method="post" action="{{route('admin.orderlist.search')}}">
                             @csrf
                             <div class="col-md-4">
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label" ><b>Order ID</b></label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" >
+                                        <input name="orderid" type="text" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Customer</b></label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" >
+                                        <input name="customername" type="text" class="form-control" >
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                         @else
                                         <a class="btn btn-primary btn-sm" href="{{route('admin.orderentry.view',$ol->orderid)}}">Detail</a>
                                         @endif
-                                        <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
+                                        <a href="{{route('admin.orderlist.delete',$ol->id)}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin untuk menghapus order list ini ?');"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

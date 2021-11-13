@@ -17,8 +17,26 @@ class orderlist extends Controller {
         $orderListData = m_orderlist::where('id_user', Auth::id())->get(); // Auth::user()->id
         //dd($orderListData);
         return view('admin.orderlist', [
-            'orderListData' => $orderListData,
-            'x' => "1"
+            'orderListData' => $orderListData
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->orderid == null)
+        {
+            $orderListData = m_orderlist::where('customername', 'LIKE', '%' . $request->customername . '%')->get();
+        }
+        elseif ($request->customername == null)
+        {
+            $orderListData = m_orderlist::where('orderid', 'LIKE', '%' . $request->orderid . '%')->get();
+        }
+        else
+        {
+            $orderListData = m_orderlist::where('orderid', 'LIKE', '%' . $request->orderid . '%')->where('customername', 'LIKE', '%' . $request->customername . '%')->get();
+        }
+        return view('admin.orderlist', [
+            'orderListData' => $orderListData
         ]);
     }
 
@@ -60,6 +78,17 @@ class orderlist extends Controller {
         $orderlist->save();
 
         return redirect()->back()->with('success', 'Order list telah berhasil disimpan');
+    }
+
+    public function delete($id_orderlist)
+    {
+        //delete child di table orderentry
+        $delentry = m_orderentry::where('id_orderlist', $id_orderlist)->delete();
+
+        //delete orderlist
+        $delorder = m_orderlist::where('id', $id_orderlist)->delete();
+
+        return redirect()->back();
     }
 
 }
