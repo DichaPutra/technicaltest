@@ -24,9 +24,26 @@ class orderentry extends Controller {
         ]);
     }
 
-    public function add()
+    public function add(Request $request)
     {
         // tambahkan list di tabel orderentry
+        $orderentry = new m_orderentry;
+        $orderentry->id_orderlist = $request->id_orderlist;
+        $orderentry->id_product = $request->id_product;
+        $orderentry->orderid = $request->orderid;
+        $orderentry->productname = $request->productname;
+        $orderentry->unitprice = $request->unitprice;
+        $orderentry->qty = $request->qty;
+        $orderentry->subtotal = $request->unitprice * $request->qty;
+        $orderentry->save();
+
+        return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        m_orderentry::where('id',$id)->delete();
+        return redirect()->back();
     }
 
 }

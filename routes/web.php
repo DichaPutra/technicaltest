@@ -32,6 +32,8 @@ Route::middleware([cekAdmin::class])->group(function () {
     Route::get('admin-orderlist', [\App\Http\Controllers\admin\orderlist::class, 'index'])->name('admin.orderlist');
     Route::get('admin-orderlist-add', [\App\Http\Controllers\admin\orderlist::class, 'add'])->name('admin.orderlist.add');
     Route::get('admin-orderentry-view/{orderid}', [\App\Http\Controllers\admin\orderentry::class, 'view'])->name('admin.orderentry.view');
+    Route::post('admin-orderentry-add', [\App\Http\Controllers\admin\orderentry::class, 'add'])->name('admin.orderentry.add');
+    Route::get('admin-orderentry-delete/{id}', [\App\Http\Controllers\admin\orderentry::class, 'delete'])->name('admin.orderentry.delete');
 });
 
 //user

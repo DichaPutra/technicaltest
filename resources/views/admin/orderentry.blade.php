@@ -39,13 +39,13 @@
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Order Date</b></label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" value="{{$orderlist->orderdate}}">
+                                        <input type="date" class="form-control" value="{{$orderlist->orderdate}}" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Customer Name</b></label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" value="{{$orderlist->customername}}">
+                                        <input type="text" class="form-control" value="{{$orderlist->customername}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -58,12 +58,15 @@
                         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form>
+                                    <form method="post" action="{{route('admin.orderentry.add')}}">
+                                        @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+                                            <input name="id_orderlist" type="hidden" value="{{$orderlist->id}}">
+                                            <input name="orderid" type="hidden" value="{{$orderlist->orderid}}">
                                             <livewire:addproduct />
                                         </div>
                                         <div class="modal-footer">
@@ -96,7 +99,7 @@
                                     <td>{{ $oe->qty}}</td>
                                     <td>{{ $oe->subtotal}}</td>
                                     <td>
-                                        <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
+                                        <a href="{{route('admin.orderentry.delete',$oe->id)}}" class="btn btn-danger btn-sm" href="#" onclick="return confirm('Apakah anda yakin untuk menghapus item ini ?');"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

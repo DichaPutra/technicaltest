@@ -17,7 +17,7 @@ class CreateOrderentryTable extends Migration {
             $table->id();
             $table->unsignedBigInteger('id_orderlist');
             $table->foreign('id_orderlist')->references('id')->on('orderlist');
-            $table->unsignedBigInteger('id_product')->unique();
+            $table->unsignedBigInteger('id_product');
             $table->foreign('id_product')->references('id')->on('product');
             $table->string('orderid');
             $table->string('productname');

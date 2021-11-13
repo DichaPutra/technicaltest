@@ -1,7 +1,7 @@
 <div>
     <label><b>Product ID</b></label>
-    <select  name="productid" wire:model="productid" class="form-control" required="">
-        <option>- Pilih -</option>
+    <select  name="id_product" wire:model="productid" class="form-control" required>
+        <option value="" hidden>- Pilih -</option>
         @foreach ($product as $product)
         <option value="{{$product->id}}">{{$product->id}}</option>
         @endforeach
@@ -17,7 +17,7 @@
     </div><br>
 
     <label><b>QTY</b></label>
-    <input name="qty" class="form-control" type="text" value=""  required="">
+    <input name="qty" class="form-control" type="number" min="1" value=""  required="">
 
 
 </div> 
