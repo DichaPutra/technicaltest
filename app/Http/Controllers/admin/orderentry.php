@@ -42,8 +42,10 @@ class orderentry extends Controller {
 
     public function delete($id)
     {
-        m_orderentry::where('id',$id)->delete();
+        m_orderentry::where('id', $id)->delete();
         return redirect()->back();
     }
+
+
 
 }

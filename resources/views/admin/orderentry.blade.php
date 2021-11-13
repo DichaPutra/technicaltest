@@ -27,30 +27,58 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form>
+                        <!-- Alert error message-->
+                        @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible show" role="alert">
+                            {{$errors->first()}}
+                        </div>
+                        @endif
+
+                        <!--Alert success message-->
+                        @if (\Session::has('success'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{!! \Session::get('success') !!}</li>
+                            </ul>
+                        </div>
+                        @endif
+
+
+                        <form method="post" action="{{route('admin.orderlist.save')}}">
                             @csrf
+                            <input name="id_orderlist" type="hidden" value="{{$orderlist->id}}">
                             <div class="col-md-4">
                                 <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Order ID</b></label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" value="{{$orderlist->orderid}}" readonly="">
+                                    <label for="inputEmail3" class="col-sm-4 col-form-label"><b>Order ID</b></label>
+                                    <div class="col-sm-8">
+                                        <input name="orderid" type="text" class="form-control" value="{{$orderlist->orderid}}" readonly="">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Order Date</b></label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control" value="{{$orderlist->orderdate}}" required>
+                                    <label for="inputPassword3" class="col-sm-4 col-form-label"><b>Order Date</b></label>
+                                    <div class="col-sm-8">
+                                        @if($orderlist->totalprice != null)
+                                        <input name="orderdate" type="date" class="form-control" value="{{$orderlist->orderdate}}" readonly>
+                                        @else
+                                        <input name="orderdate" type="date" class="form-control" value="{{$orderlist->orderdate}}" required>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label"><b>Customer Name</b></label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" value="{{$orderlist->customername}}" required>
+                                    <label for="inputPassword3" class="col-sm-4 col-form-label"><b>Customer Name</b></label>
+                                    <div class="col-sm-8">
+                                        @if($orderlist->totalprice != null)
+                                        <input name="customername" type="text" class="form-control" value="{{$orderlist->customername}}" readonly>
+                                        @else
+                                        <input name="customername" type="text" class="form-control" value="{{$orderlist->customername}}" required>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
+                            @if($orderlist->totalprice == null)
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Item</button>
-                            <a href='#'><button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save Order</button></a>
+                            <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save Order</button>
+                            @endif
                         </form><br>
 
                         <!--MODAL Tambah Product-->
@@ -87,7 +115,9 @@
                                     <th>Unit Price</th>
                                     <th>QTY</th>
                                     <th>Sub Total</th>
+                                    @if($orderlist->totalprice == null)
                                     <th>Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -98,9 +128,11 @@
                                     <td>{{ $oe->unitprice}}</td>
                                     <td>{{ $oe->qty}}</td>
                                     <td>{{ $oe->subtotal}}</td>
+                                    @if($orderlist->totalprice == null)
                                     <td>
                                         <a href="{{route('admin.orderentry.delete',$oe->id)}}" class="btn btn-danger btn-sm" href="#" onclick="return confirm('Apakah anda yakin untuk menghapus item ini ?');"><i class="fas fa-trash"></i></a>
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

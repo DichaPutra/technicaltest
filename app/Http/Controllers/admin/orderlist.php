@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\m_orderlist;
+use App\Models\m_orderentry;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,29 @@ class orderlist extends Controller {
 
         //view order entry
         return redirect()->route('admin.orderentry.view', $orderid);
+    }
+
+    public function save(Request $request)
+    {
+        // jika order entry tidak ada -> back with error message.
+        $jumlahorder = m_orderentry::where('id_orderlist', $request->id_orderlist)->count();
+        if ($jumlahorder == 0)
+        {
+            return redirect()->back()->withErrors('Product/Item tidak boleh kosong, harap tambahkan product terlebih dahulu.');
+        }
+
+        // get total price dari orderentry
+        $totalprice = m_orderentry::where('id_orderlist', $request->id_orderlist)->sum('subtotal');
+
+
+        // update orderlist : date, customer name, total price
+        $orderlist = m_orderlist::find($request->id_orderlist);
+        $orderlist->orderdate = $request->orderdate;
+        $orderlist->customername = $request->customername;
+        $orderlist->totalprice = $totalprice;
+        $orderlist->save();
+
+        return redirect()->back()->with('success', 'Order list telah berhasil disimpan');
     }
 
 }

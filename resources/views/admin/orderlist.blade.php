@@ -67,7 +67,11 @@
                                     <td>{{ $ol->customername }}</td>
                                     <td>{{ $ol->totalprice }}</td>
                                     <td>
+                                        @if($ol->totalprice == null)
                                         <a class="btn btn-secondary btn-sm" href="{{route('admin.orderentry.view',$ol->orderid)}}">Edit</a>
+                                        @else
+                                        <a class="btn btn-primary btn-sm" href="{{route('admin.orderentry.view',$ol->orderid)}}">Detail</a>
+                                        @endif
                                         <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
