@@ -36,7 +36,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Ninth navbar example">
             <div class="container-xl">
-                <a class="navbar-brand" href="#">TechnicalTest</a>
+                <a class="navbar-brand" href="{{ route('login') }}">TechnicalTest</a>
                 <div class="pull-right">
                     <button class="navbar-toggler pull-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
