@@ -38,6 +38,9 @@
                         </form>
                     </div>
                 </div>
+                <b>Login Account</b><br>
+                username : user / admin<br>
+                pass : 123123123
             </div>
         </div>
     </div>
